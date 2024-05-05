@@ -4,8 +4,8 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   // TODO
-  var dropdown = document.getElementById("horn-select");
-  const audioElement = document.querySelector("audio");
+  const dropdown = document.getElementById("horn-select");
+  const audioElement = document.getElementById("volume");
 
   dropdown.addEventListener("change", changeImgAndAudio);
   audioElement.addEventListener("change", changeVolume);
@@ -41,9 +41,8 @@ function changeImgAndAudio() {
 }
 
 function changeVolume() {
-  volume.addEventListener("input", function () {
     const volume = document.getElementById("volume");
-    const volumeIcon = document.querySelector("#volume-controls img");
+    const volumeIcon = document.querySelector("#volume-controls > img");
     const audioElement = document.querySelector("audio");
     const vol = parseInt(volume.value);
 
@@ -58,5 +57,4 @@ function changeVolume() {
     }
 
     audioElement.volume = vol / 100;
-  });
 }
