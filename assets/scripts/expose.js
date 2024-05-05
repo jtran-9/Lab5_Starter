@@ -5,8 +5,10 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
   // TODO
   var dropdown = document.getElementById("horn-select");
+  const audioElement = document.querySelector("audio");
 
-  document.addEventListener("change", changeImgAndAudio)
+  dropdown.addEventListener("change", changeImgAndAudio);
+  audioElement.addEventListener("change", changeVolume);
 }
 
 
@@ -36,4 +38,25 @@ function changeImgAndAudio() {
     img.src = "assets/images/no-image.png";
     audioElement.src = "";
   }
+}
+
+function changeVolume() {
+  volume.addEventListener("input", function () {
+    const volume = document.getElementById("volume");
+    const volumeIcon = document.querySelector("#volume-controls img");
+    const audioElement = document.querySelector("audio");
+    const vol = parseInt(volume.value);
+
+    if (vol == 0) {
+      volumeIcon.src = "assets/icons/volume-level-0.svg";
+    } else if (vol < 33) {
+      volumeIcon.src = "assets/icons/volume-level-1.svg";
+    } else if (vol < 67) {
+      volumeIcon.src = "assets/icons/volume-level-2.svg";
+    } else {
+      volumeIcon.src = "assets/icons/volume-level-3.svg";
+    }
+
+    audioElement.volume = vol / 100;
+  });
 }
