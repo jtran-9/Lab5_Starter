@@ -1,4 +1,4 @@
 # Lab 5 - Starter
-Justin Tran
-Arjun Kohli
+Justin Tran <br>
+Arjun Kohli <br>
 Anthony Chapov
