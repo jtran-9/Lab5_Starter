@@ -1,16 +1,58 @@
 // expose.js
+//import JSConfetti from 'js-confetti'
+
+//const jsConfetti = new JSConfetti()
+
+//JSConfetti.addConfetti()
+
+
 
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   // TODO
   const dropdown = document.getElementById("horn-select");
-  const audioElement = document.getElementById("volume");
+  //const audioElement = document.querySelector("audio");
+  const buttonElement = document.querySelector('button');
+  const volume = document.getElementById("volume");
 
   dropdown.addEventListener("change", changeImgAndAudio);
-  audioElement.addEventListener("change", changeVolume);
-}
+  volume.addEventListener("change", changeVolume);
 
+  
+  //buttonElement.addEventListener('click', JSConfetti.addConfetti());
+  buttonElement.addEventListener('click', function() {
+    const selectedHorn = dropdown.value;
+    const vol = parseInt(volume.value);
+    const jsConfetti = new JSConfetti()
+    if (dropdown.value == "party-horn")
+      {
+        //const jsConfetti = new JSConfetti()
+        jsConfetti.addConfetti();
+      }
+
+      playSound(selectedHorn, vol);
+    
+  });
+  
+}
+//helper function: plays sound when button is clicked: parameters are horn type and volume 
+function playSound(horn_type, vol) {
+  const audioElement = document.querySelector("audio");
+
+  if (horn_type === "air-horn") {
+    audioElement.src = "assets/audio/air-horn.mp3";
+  } else if (horn_type === "car-horn") {
+    audioElement.src = "assets/audio/car-horn.mp3";
+  } else if (horn_type === "party-horn") {
+    audioElement.src = "assets/audio/party-horn.mp3";
+  } else {
+    audioElement.src = "";
+  }
+
+  audioElement.volume = vol / 100;
+  audioElement.play();
+}
 
 // changes image and audio file based on dropdown value
 function changeImgAndAudio() {
@@ -39,10 +81,13 @@ function changeImgAndAudio() {
     audioElement.src = "";
   }
 }
+ 
+
 
 function changeVolume() {
+  volume.addEventListener("input", function () {
     const volume = document.getElementById("volume");
-    const volumeIcon = document.querySelector("#volume-controls > img");
+    const volumeIcon = document.querySelector("#volume-controls img");
     const audioElement = document.querySelector("audio");
     const vol = parseInt(volume.value);
 
@@ -57,4 +102,5 @@ function changeVolume() {
     }
 
     audioElement.volume = vol / 100;
+  });
 }
