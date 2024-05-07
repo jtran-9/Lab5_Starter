@@ -8,5 +8,5 @@ Anthony Chapov
 
 2) Yes, I would use unit tests to test the “max message length” feature of a messaging application as unit testing can ensure that a simple feature like checking the message length functions as intended and this won't be affected by the other features either.
 
-[explore.html](https://jtran-9.github.io/Lab5_Starter/explore.html)
+[explore.html](https://jtran-9.github.io/Lab5_Starter/explore.html) <br>
 [expose.html](https://jtran-9.github.io/Lab5_Starter/expose.html)
